@@ -1,0 +1,146 @@
+<html>
+<body onload="getMobileOperatingSystem()">
+</body>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+/**
+ * Determine the mobile operating system.
+ * This function returns one of 'iOS', 'Android', 'Windows Phone', or 'unknown'.
+ *
+ * @returns {String}
+ */
+ function getMobileOperatingSystem() {
+  var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+      // Windows Phone must come first because its UA also contains "Android"
+    if (/windows phone/i.test(userAgent)) {
+        console.log("Windows Phone");
+        
+        window.parent.location.reload();
+		
+        return "Windows Phone";
+    }
+
+    if (/android/i.test(userAgent)) {
+        console.log("Android");
+        window.location.replace("https://play.google.com/store/apps/details?id=com.s2s.surfcoins");
+		
+		// var tlink="https://play.google.com/store/apps/details?id=com.s2s.surfcoins";
+		//  var paramobject = new Object();
+
+        //         paramobject.link = tlink
+             
+        //         paramobject.shareid = getParameterByName('shareid');
+        //         paramobject.deviceType = "Android";
+               
+
+        //         $.ajax({
+        //             type: "POST",
+        //             url: 'http://35.197.145.174/RD_API/api/RedirectApp', // the method we are calling
+
+        //             data: paramobject,
+
+        //             success: function (Message) {
+        //                 //alert(Message.Message);
+        //                // console.log(Message);
+        //                 // Or if you are returning something
+        //                 // alert('I returned... ' + result.WhateverIsReturning);
+
+                   
+        //             },
+        //             error: function (result) {
+        //                 alert('Oh no :(' + result);
+        //             }
+        //         });
+			
+        return "Android";
+    }
+
+    // iOS detection from: http://stackoverflow.com/a/9039885/177710
+    if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        console.log("iOS");
+		
+		
+        window.location.replace("https://apps.apple.com/ph/app/surfcoins-surf2sawa/id1609015138");
+		// var tlink="https://apps.apple.com/gb/app/beligas/id1550482584?ign-mpt=uo%3D2";
+		//  var paramobject = new Object();
+
+        //         paramobject.link = tlink
+             
+        //         paramobject.shareid = getParameterByName('shareid');
+        //         paramobject.deviceType = "iOS";
+               
+
+        //         $.ajax({
+        //             type: "POST",
+        //             url: 'http://35.197.145.174/RD_API/api/RedirectApp', // the method we are calling
+
+        //             data: paramobject,
+
+        //             success: function (Message) {
+        //                 //alert(Message.Message);
+        //                 //console.log(Message);
+        //                 // Or if you are returning something
+        //                 // alert('I returned... ' + result.WhateverIsReturning);
+
+        //                       window.location.replace("https://apps.apple.com/gb/app/beligas/id1550482584?ign-mpt=uo%3D2");
+        //             },
+        //             error: function (result) {
+        //                 alert('Oh no :(' + result);
+        //             }
+        //         });
+	
+        return "iOS";
+    }
+	 console.log("unknown");
+	 //debugger;
+     window.location.replace("http://surf2sawa.com/");
+	//  var tlink="http://surf2sawa.com/";
+	// 	 var paramobject = new Object();
+  
+    //             paramobject.link = tlink
+             
+    //             paramobject.shareid = getParameterByName('shareid');
+    //             paramobject.deviceType = "Desktop";
+               
+
+    //             $.ajax({
+    //                 type: "POST",
+    //                 url: 'http://35.197.145.174/RD_API/api/RedirectApp', // the method we are calling
+
+    //                 data: paramobject,
+
+    //                 success: function (Message) {
+    //                   //  alert(Message.Message);
+    //                   //  console.log(Message);
+    //                     // Or if you are returning something
+    //                     // alert('I returned... ' + result.WhateverIsReturning);
+
+    //                         window.location.replace("http://surf2sawa.com/");
+    //                 },
+    //                 error: function (result) {
+    //                     alert('Oh no :(' + result);
+    //                 }
+    //             });
+			
+
+    return "unknown";
+}
+function getRandom(length) {
+
+return Math.floor(Math.pow(10, length-1) + Math.random() * 9 * Math.pow(10, length-1));
+
+}
+function getParameterByName(name, url = window.location.href) {
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
+</script>
+</html>
